@@ -20,7 +20,17 @@ except Exception as e:
 db = client["sample_mflix"]
 collection = db["movies"]
 
-# Getting a Single Document With find_one()
-# https://pymongo.readthedocs.io/en/stable/tutorial.html#getting-a-single-document-with-find-one
-import pprint
-pprint.pprint(collection.find_one())
+# Convert PyMongo Cursor to Dataframe
+# https://www.geeksforgeeks.org/convert-pymongo-cursor-to-dataframe/
+import pandas as pd
+
+data = list(collection.find())
+df = pd.DataFrame(data)
+print(df)
+
+# Export DataFrame to Excel file
+# https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_excel.html
+excel_file = "mongodb_toexcel.xlsx"
+df.to_excel(excel_file, index=False, engine='openpyxl')
+
+print(f"Exported MongoDB documents to {excel_file}")
