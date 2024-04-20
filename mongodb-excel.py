@@ -17,8 +17,10 @@ except Exception as e:
 
 # Getting a Database and a Collection
 # https://pymongo.readthedocs.io/en/stable/tutorial.html#getting-a-database
-db = client["sample_mflix"]
-collection = db["movies"]
+# db = client["sample_mflix"]
+# collection = db["movies"]
+db = client["ustaa"]
+collection = db["users"]
 
 # Convert PyMongo Cursor to Dataframe
 # https://www.geeksforgeeks.org/convert-pymongo-cursor-to-dataframe/
